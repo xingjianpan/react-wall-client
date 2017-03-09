@@ -60,7 +60,7 @@ class Signup extends Component {
 function validate(formProps){
   const errors = {}
 
-  if (formProps.password1 != formProps.password2){
+  if (formProps.password1 !== formProps.password2){
     errors.password = "Password must match"
   }
 

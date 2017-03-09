@@ -20,7 +20,7 @@ import reducers from './reducers';
 import {AUTH_USER} from './actions/types';
 
 // css
-import './index.css';
+// import './index.css';
 
 
 const createStoreWithMiddleware = applyMiddleware(ReduxPromise, reduxThunk)(createStore);
