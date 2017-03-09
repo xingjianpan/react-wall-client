@@ -9,9 +9,9 @@ import {
 
 const ROOT_URL = 'http://localhost:8081/rest-auth';
 
-export function signupUser({ username, email, password1, password2 }) {
+export function signupUser({ email, password1, password2 }) {
   return (dispatch) => {
-    axios.post(`${ROOT_URL}/registration/`, { username, email, password1, password2 })
+    axios.post(`${ROOT_URL}/registration/`, { email, password1, password2 })
       .then((response) => {
         // if request is good
         // - update state to indicate user is authenticated
@@ -31,13 +31,13 @@ export function signupUser({ username, email, password1, password2 }) {
 }
 
 
-export function signinUser({ username, password }) {
+export function signinUser({ email, password }) {
 
   // use 'redux-thunk' to return an function
   // instead an object
   return (dispatch) => {
     // submit email/password to server
-    axios.post(`${ROOT_URL}/login/`, { username, password }) // {email:email, password:password}
+    axios.post(`${ROOT_URL}/login/`, { email, password }) // {email:email, password:password}
       .then((response) => {
           // if request is good
           // - update state to indicate user is authenticated
@@ -68,5 +68,11 @@ export function signoutUser() {
   return {
     type: UNAUTH_USER,
 
+  }
+}
+
+export function clearError() {
+  return {
+    type: 'CLEAR_ERROR'
   }
 }

@@ -15,14 +15,16 @@ const renderField = ({ input, label, type, meta: { touched, error, warning } }) 
 
 
 class Signup extends Component {
-
+  componentWillMount() {
+    this.props.clearError()
+  }
   renderAlert() {
     if (this.props.errorMessage){
       return (
         <div className="alert alert-danger">
           <strong>Opps!</strong>
           <ul>
-          {this.props.errorMessage.map(text => <li>{text}</li>)}
+          {this.props.errorMessage}
           </ul>
         </div>
         )
@@ -30,7 +32,6 @@ class Signup extends Component {
   }
   handlFormSubmit(formProps){
     // call action creator to sign up the user
-    console.log(formProps)
     this.props.signupUser(formProps)
 
   }
@@ -38,9 +39,6 @@ class Signup extends Component {
     const {handleSubmit} = this.props
     return (
       <form onSubmit={handleSubmit(this.handlFormSubmit.bind(this))}>
-        <fieldset className="form-group">
-          <Field label="Username" name="username" component={renderField} type="text" className="form-control" />
-        </fieldset>
         <fieldset className="form-group">
           <Field label="Email" name="email" component={renderField} type="email" className="form-control" />
         </fieldset>
@@ -67,9 +65,6 @@ function validate(formProps){
   // TODO - use map/reduce/loop to DRY this part
   if (!formProps.email){
     errors.email = "Please enter email"
-  }
-  if (!formProps.username){
-    errors.email = "Please enter user name"
   }
   if (!formProps.password1){
     errors.password1 = "Please enter a password"
