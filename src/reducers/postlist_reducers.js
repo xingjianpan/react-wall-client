@@ -15,6 +15,7 @@ const INITIAL_STATE = {
   nextHref: null,
   prevHref: null,
   ignoreLastFetch: null,
+  error: ''
 };
 
 

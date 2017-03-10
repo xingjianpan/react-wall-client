@@ -10,11 +10,12 @@ import {
   FETCH_POST_LIST_FAILED,
   RESET_POST_LIST,
   SET_IGNORE_LAST_FETCH,
-
+  ADD_POST,
 } from './types';
 
 
 const AUTH_ROOT_URL = 'http://localhost:8081/rest-auth';
+const POST_ROOT_URL = 'http://localhost:8081/wall/posts/';
 
 export function signupUser({ email, password1, password2 }) {
   return (dispatch) => {
@@ -133,4 +134,20 @@ export const resetPostList = () => {
     type: RESET_POST_LIST,
   };
 };
+
+export const addPost = ({ title, content }) => {
+  return (dispatch) => {
+    axios.post(
+      `${POST_ROOT_URL}`,
+      { title, content },
+      { headers: { Authorization: `Token ${localStorage.getItem('token')}` }},
+    )
+    .then(response => {
+      browserHistory.push('/');
+      dispatch(fetchPostList(POST_ROOT_URL));
+    });
+  };
+};
+
+
 

@@ -14,10 +14,10 @@ import Signout from './components/auth/signout';
 import Signup from './components/auth/signup';
 import Resouces from './components/Resource';
 import PostList from './components/PostList';
-
+import AddPost from './components/AddPost';
 // reducers
 import reducers from './reducers';
-import {AUTH_USER} from './actions/types';
+import { AUTH_USER } from './actions/types';
 
 // css
 // import './index.css';
@@ -46,6 +46,7 @@ ReactDOM.render(
         <Route path="signout" component={Signout} />
         <Route path="signup" component={Signup} />
         <Route path="resources" component={requireAuth(Resouces)} />
+        <Route path="addpost" component={requireAuth(AddPost)} />
       </Route>
     </Router>
   </Provider>
