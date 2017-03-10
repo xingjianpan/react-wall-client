@@ -13,7 +13,7 @@ import Signin from './components/auth/signin';
 import Signout from './components/auth/signout';
 import Signup from './components/auth/signup';
 import Resouces from './components/Resource';
-import Welcome from './components/Welcome';
+import PostList from './components/PostList';
 
 // reducers
 import reducers from './reducers';
@@ -24,7 +24,10 @@ import {AUTH_USER} from './actions/types';
 
 
 const createStoreWithMiddleware = applyMiddleware(ReduxPromise, reduxThunk)(createStore);
-const store = createStoreWithMiddleware(reducers);
+const store = createStoreWithMiddleware(
+  reducers,
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
+  );
 const token = localStorage.getItem('token');
 
 // if we have a token, consider the use to be signin
@@ -38,7 +41,7 @@ ReactDOM.render(
   <Provider store={store}>
     <Router history={browserHistory}>
       <Route path="/" component={App}>
-        <IndexRoute component={Welcome}/>
+        <IndexRoute component={PostList}/>
         <Route path="signin" component={Signin} />
         <Route path="signout" component={Signout} />
         <Route path="signup" component={Signup} />
