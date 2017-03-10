@@ -10,7 +10,6 @@ import {
   FETCH_POST_LIST_FAILED,
   RESET_POST_LIST,
   SET_IGNORE_LAST_FETCH,
-  ADD_POST,
 } from './types';
 
 
