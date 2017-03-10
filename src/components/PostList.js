@@ -29,7 +29,7 @@ class PostList extends Component {
 
   postListRender() {
     return (
-      <div className="list-group">
+      <div className="card-list">
         {this.props.postList.map(item => this.renderPostItem(item)) }
       </div>
     );
@@ -63,9 +63,12 @@ class PostList extends Component {
       );
     } else if (this.props.nextHref) {
       return <a href="#" onClick={() => { this.fetchMore(this.props.nextHref); }}>Next Page</a>
+    } else if (this.props.prevHref) {
+      return <a href="#" onClick={() => { this.fetchMore(this.props.prevHref); }}>Previous Page</a>
     }
 
-    return <a href="#" onClick={() => { this.fetchMore(this.props.prevHref); }}>Previous Page</a>
+    return <p></p>
+
 
   }
 
