@@ -1,6 +1,5 @@
 import axios from 'axios';
 import { browserHistory } from 'react-router';
-
 import * as actionTypes from '../../constants/actionTypes';
 import { AUTH_ROOT_URL } from '../../services/api';
 
@@ -18,13 +17,12 @@ export function signupUser({ email, password1, password2 }) {
       })
       .catch((error) => {
         const errObj = error.response.data;
-        const errArray = Object.keys(errObj).map(function (key) { return errObj[key]; });
+        const errArray = Object.keys(errObj).map((key) => { return errObj[key]; });
         // NOTE here need to use error.response
         dispatch(authError(errArray));
       });
   };
 }
-
 
 export function signinUser({ email, password }) {
 
@@ -32,7 +30,7 @@ export function signinUser({ email, password }) {
   // instead an object
   return (dispatch) => {
     // submit email/password to server
-    axios.post(`${AUTH_ROOT_URL}/login/`, { email, password }) // {email:email, password:password}
+    axios.post(`${AUTH_ROOT_URL}/login/`, { email, password })
       .then((response) => {
           // if request is good
           // - update state to indicate user is authenticated

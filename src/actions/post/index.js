@@ -1,6 +1,5 @@
 import axios from 'axios';
 import { browserHistory } from 'react-router';
-
 import * as actionTypes from '../../constants/actionTypes';
 import { POST_ROOT_URL } from '../../services/api';
 
@@ -12,6 +11,7 @@ export const fetchPostListSuccess = (response) => {
     payload: response,
   };
 };
+
 
 export const fetchPostListFailed = (bool) => {
   return {
@@ -57,9 +57,9 @@ export const addPost = ({ title, content }) => {
     axios.post(
       `${POST_ROOT_URL}`,
       { title, content },
-      { headers: { Authorization: `Token ${localStorage.getItem('token')}` }},
+      { headers: { Authorization: `Token ${localStorage.getItem('token')}`} },
     )
-    .then(response => {
+    .then((response) => {
       browserHistory.push('/');
       dispatch(fetchPostList(POST_ROOT_URL));
     });
