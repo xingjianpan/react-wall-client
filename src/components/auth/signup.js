@@ -16,7 +16,7 @@ const renderField = ({ input, label, type, meta: { touched, error, warning } }) 
 
 class Signup extends Component {
   componentWillMount() {
-    this.props.clearError()
+    this.props.clearAuthError()
   }
   renderAlert() {
     if (this.props.errorMessage){

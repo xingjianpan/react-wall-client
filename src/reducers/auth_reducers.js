@@ -1,20 +1,16 @@
-import {
-  AUTH_USER,
-  UNAUTH_USER,
-  AUTH_ERROR,
-} from '../actions/types';
+import * as actionTypes from '../constants/actionTypes';
 
 export default function (state = {}, action) {
   // console.log(action);
   switch (action.type) {
-    case AUTH_USER:
+    case actionTypes.AUTH_USER:
       return { ...state, error: '', authenticated: true };
-    case UNAUTH_USER:
+    case actionTypes.UNAUTH_USER:
       return { ...state, authenticated: false };
-    case AUTH_ERROR:
+    case actionTypes.AUTH_ERROR:
       return { ...state, error: action.payload };
-    case 'CLEAR_ERROR':
-      return { error:'' }
+    case actionTypes.CLEAR_AUTH_ERROR:
+      return { error: '' };
     default:
       return state;
   }

@@ -17,7 +17,7 @@ import PostList from './components/PostList';
 import AddPost from './components/AddPost';
 // reducers
 import reducers from './reducers';
-import { AUTH_USER } from './actions/types';
+import * as actionTypes from './constants/actionTypes';
 
 // css
 // import './index.css';
@@ -33,7 +33,7 @@ const token = localStorage.getItem('token');
 // if we have a token, consider the use to be signin
 if (token) {
   // we need to update the application state
-  store.dispatch({type: AUTH_USER})
+  store.dispatch({type: actionTypes.AUTH_USER})
 }
 
 
