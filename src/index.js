@@ -1,15 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import {Router, Route, IndexRoute, browserHistory} from 'react-router';
-import requireAuth from './components/require_authentication';
+import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 import App from './components/App';
+import requireAuth from './components/auth/require_authentication';
 import Signin from './components/auth/Signin';
 import Signout from './components/auth/Signout';
 import Signup from './components/auth/Signup';
-import Resouces from './components/Resource';
-import PostList from './components/PostList';
-import AddPost from './components/AddPost';
+import PostList from './components/post/PostList';
+import AddPost from './components/post/AddPost';
 import * as actionTypes from './constants/actionTypes';
 import configureStore from './stores/configureStore';
 // css
@@ -33,7 +32,6 @@ ReactDOM.render(
         <Route path="signin" component={Signin} />
         <Route path="signout" component={Signout} />
         <Route path="signup" component={Signup} />
-        <Route path="resources" component={requireAuth(Resouces)} />
         <Route path="addpost" component={requireAuth(AddPost)} />
         <Route path="*" component={PostList} />
       </Route>

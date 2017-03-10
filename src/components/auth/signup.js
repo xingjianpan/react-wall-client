@@ -86,4 +86,4 @@ Signup = reduxForm({
 
 Signup = connect(mapStateToProps, actions)(Signup)
 
-export default Signup
+export default Signup;

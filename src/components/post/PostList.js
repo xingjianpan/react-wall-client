@@ -4,7 +4,7 @@ import Loading from 'react-loading';
 
 
 // relative import
-import { fetchPostList, resetPostList, setIgnoreLastFetch } from '../actions';
+import { fetchPostList, resetPostList, setIgnoreLastFetch } from '../../actions';
 import Post from './Post';
 
 const POST_LIST_URL = 'http://localhost:8081/wall/posts/';

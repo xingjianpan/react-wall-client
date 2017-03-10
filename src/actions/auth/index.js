@@ -13,7 +13,7 @@ export function signupUser({ email, password1, password2 }) {
         // - save the JWT token, use localstorage
         localStorage.setItem('token', response.data.key);
         // - redirect to the route /resources
-        browserHistory.push('/resources');
+        browserHistory.push('/');
       })
       .catch((error) => {
         const errObj = error.response.data;
@@ -38,7 +38,7 @@ export function signinUser({ email, password }) {
         // - save the JWT token, use localstorage
         localStorage.setItem('token', response.data.key);
         // - redirect to the route /feature
-        browserHistory.push('/resources');
+        browserHistory.push('/');
       })
       .catch(() => {
         // if request is bad
