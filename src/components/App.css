@@ -1,7 +1,19 @@
 .card {
   width: 200px;
+  height: 200px;
   display: flex;
   flex-direction: column;
+  margin: 10px;
+  word-wrap: break-word;
+  overflow: auto;
 
 }
 
+.card-list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items:baseline;
+
+}
