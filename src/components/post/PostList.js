@@ -81,6 +81,7 @@ class PostList extends Component {
     if (this.props.isLoading) {
       return <Loading type="bars" color="#e3e3e3" />;
     }
+    document.title = '知识卡片';
     return (
       <div>
         <div>

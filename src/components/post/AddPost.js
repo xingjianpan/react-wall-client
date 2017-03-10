@@ -35,9 +35,6 @@ const renderField = ({ input, label, type, textarea, meta: { touched, error, war
 
 
 class AddPost extends Component {
-  componentWillMount() {
-    console.log('will mount')
-  }
 
   handleFormSubmit(formProps) {
     console.log(formProps)
