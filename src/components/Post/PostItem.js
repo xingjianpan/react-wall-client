@@ -18,16 +18,20 @@ class PostItem extends Component {
     }
   }
 
-  renderEditor(){
-    if(this.props.authenticated) {
-      return (
-        <div>
-          <button>Edit</button>
-          <button>Delete</button>
-        </div>
-      )
+  renderEditor(post){
+    // show editor if current user is also the owner of the post
+    if (this.props.user) {
+      if (this.props.user.username === post.owner) {
+        return (
+          <div>
+            <button>Edit</button>
+            <button>Delete</button>
+          </div>
+        );
+      }
     }
   }
+
   render() {
     const post = this.props.post;
     if (this.props.hasErrored) {
@@ -47,7 +51,7 @@ class PostItem extends Component {
 
         </div>
 
-        {this.renderEditor()}
+        {this.renderEditor(post)}
       </div>
     )
   }
@@ -55,13 +59,15 @@ class PostItem extends Component {
 
 const mapStateToProps = (state) => {
   const { isLoading, post, hasErrored } = state.post;
-  const { authenticated } = state.auth
-  // console.log(post)
+  const { authenticated, user } = state.auth;
+
+
   return {
     isLoading,
     post,
     hasErrored,
     authenticated,
+    user,
   };
 };
 
