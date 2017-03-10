@@ -3,12 +3,12 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 import App from './components/App';
-import requireAuth from './components/auth/require_authentication';
-import Signin from './components/auth/Signin';
-import Signout from './components/auth/Signout';
-import Signup from './components/auth/Signup';
-import PostList from './components/post/PostList';
-import AddPost from './components/post/AddPost';
+import requireAuth from './components/Auth/require_authentication';
+import Signin from './components/Auth/Signin';
+import Signout from './components/Auth/Signout';
+import Signup from './components/Auth/Signup';
+import PostList from './components/Post/PostList';
+import AddPost from './components/Post/AddPost';
 import * as actionTypes from './constants/actionTypes';
 import configureStore from './stores/configureStore';
 // css
