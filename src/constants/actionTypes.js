@@ -3,6 +3,7 @@ export const AUTH_USER = 'auth_user';
 export const UNAUTH_USER = 'unauth_user';
 export const AUTH_ERROR = 'auth_error';
 export const CLEAR_AUTH_ERROR = 'CLEAR_AUTH_ERROR';
+export const SET_USER = 'SET_USER';
 // post list actions
 export const POST_LIST_IS_LOADING = 'POST_LIST_IS_LOADING';
 export const FETCH_POST_LIST_SUCCESS = 'FETCH_POST_LIST_SUCCESS';

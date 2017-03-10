@@ -9,6 +9,8 @@
 
 }
 
+
+
 .card-list {
     display: flex;
     flex-direction: row;
@@ -17,6 +19,12 @@
     align-items:baseline;
 
 }
+.card-creator{
+  display: flex;
+
+
+}
+
 
 .add-post {
   width: 200px;

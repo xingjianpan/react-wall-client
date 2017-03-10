@@ -24,6 +24,22 @@ export function signupUser({ email, password1, password2 }) {
   };
 }
 
+export function getUserDetails(token) {
+
+  return (dispatch) => {
+    axios.get(
+      `${AUTH_ROOT_URL}/user/`,
+      { headers: { Authorization: `Token ${token}`} },
+    )
+    .then((response) => {
+      dispatch({ type: actionTypes.SET_USER, payload: response });
+    })
+    .catch((error)=> {
+    });
+  };
+}
+
+
 export function signinUser({ email, password }) {
 
   // use 'redux-thunk' to return an function
@@ -38,6 +54,7 @@ export function signinUser({ email, password }) {
         // - save the JWT token, use localstorage
         localStorage.setItem('token', response.data.key);
         // - redirect to the route /feature
+        dispatch(getUserDetails(response.data.key));
         browserHistory.push('/');
       })
       .catch(() => {

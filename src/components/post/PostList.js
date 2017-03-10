@@ -42,6 +42,7 @@ class PostList extends Component {
         id={post.id}
         title={post.title}
         content={post.content}
+        user={post.owner}
       />
     );
   }
