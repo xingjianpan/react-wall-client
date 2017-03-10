@@ -9,7 +9,7 @@ import Signout from './components/Auth/Signout';
 import Signup from './components/Auth/Signup';
 import PostList from './components/Post/PostList';
 import AddPost from './components/Post/AddPost';
-import PostDetail from './components/Post/PostDetail';
+import PostItem from './components/Post/PostItem';
 import * as actionTypes from './constants/actionTypes';
 import configureStore from './stores/configureStore';
 // css
@@ -33,7 +33,7 @@ ReactDOM.render(
         <Route path="signin" component={Signin} />
         <Route path="signout" component={Signout} />
         <Route path="signup" component={Signup} />
-        <Route path="/post/:postId" component={PostDetail} />
+        <Route path="/post/:postId" component={PostItem} />
         <Route path="addpost" component={requireAuth(AddPost)} />
         <Route path="*" component={PostList} />
       </Route>

@@ -13,7 +13,7 @@ export default (state = INITIAL_STATE, action) => {
     case actionTypes.POST_ITEM_IS_LOADING:
       return { ...state, isLoading: true };
     case actionTypes.FETCH_POST_ITEM_SUCCESS:
-      return { ...state, news: action.payload.data, isLoading: false };
+      return { ...state, post: action.payload.data, isLoading: false };
     case actionTypes.FETCH_POST_ITEM_FAILED:
       return { ...state, hasErrored: true };
     default:
