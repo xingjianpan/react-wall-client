@@ -23,7 +23,7 @@ const renderField = ({ input, label, type, textarea, meta: { touched, error, war
   const inputType = <input {...input} placeholder={label} type={type} className={`form-control ${touched && invalid ? 'has-danger' : ''}`} />;
 
   return (
-    <div>
+    <div className="add-post">
       <label>{label}</label>
       <div>
         {textarea ? textareaType : inputType}

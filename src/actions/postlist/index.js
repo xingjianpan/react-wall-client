@@ -1,8 +1,5 @@
 import axios from 'axios';
-import { browserHistory } from 'react-router';
 import * as actionTypes from '../../constants/actionTypes';
-import { POST_ROOT_URL } from '../../services/api';
-
 
 export const fetchPostListSuccess = (response) => {
   // console.log(response)

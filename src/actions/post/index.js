@@ -20,6 +20,22 @@ export const addPost = ({ title, content }) => {
 };
 
 
+export const fetchPostItemSuccess = (response) => {
+  // console.log(response)
+  return {
+    type: actionTypes.FETCH_POST_ITEM_SUCCESS,
+    payload: response,
+  };
+};
+
+export const fetchPostItemFailed = (bool) => {
+  return {
+    type: actionTypes.FETCH_POST_ITEM_FAILED,
+    payload: bool,
+  };
+};
+
+
 export const postItemIsLoading = (bool) => {
   return {
     type: actionTypes.POST_ITEM_IS_LOADING,
@@ -34,21 +50,6 @@ export const fetchPostItem = (id) => {
     axios.get(`${POST_ROOT_URL}${id}/`)
       .then(response => dispatch(fetchPostItemSuccess(response)))
       .catch(()=> dispatch(fetchPostItemFailed(true)));
-  };
-};
-
-export const fetchPostItemSuccess = (response) => {
-  // console.log(response)
-  return {
-    type: actionTypes.FETCH_POST_ITEM_SUCCESS,
-    payload: response,
-  };
-};
-
-export const fetchPostItemFailed = (bool) => {
-  return {
-    type: actionTypes.FETCH_POST_ITEM_FAILED,
-    payload: bool,
   };
 };
 

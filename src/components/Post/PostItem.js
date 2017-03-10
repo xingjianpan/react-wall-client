@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Link, browserHistory } from 'react-router';
 import Loading from 'react-loading';
 
 // relative import
 import { fetchPostItem } from '../../actions';
-import Post from './Post';
 
 class PostItem extends Component {
   componentDidMount() {
@@ -20,6 +18,16 @@ class PostItem extends Component {
     }
   }
 
+  renderEditor(){
+    if(this.props.authenticated) {
+      return (
+        <div>
+          <button>Edit</button>
+          <button>Delete</button>
+        </div>
+      )
+    }
+  }
   render() {
     const post = this.props.post;
     if (this.props.hasErrored) {
@@ -30,11 +38,16 @@ class PostItem extends Component {
     }
     document.title = this.props.post.title;
     return (
-      <div className="card">
-        <div className="card-block">
-          <h4 className="card-title">{post.title}</h4>
-          <p className="card-text">{post.content}</p>
+      <div>
+        <div className="card">
+          <div className="card-block">
+            <h4 className="card-title">{post.title}</h4>
+            <p className="card-text">{post.content}</p>
+          </div>
+
         </div>
+
+        {this.renderEditor()}
       </div>
     )
   }
@@ -42,11 +55,13 @@ class PostItem extends Component {
 
 const mapStateToProps = (state) => {
   const { isLoading, post, hasErrored } = state.post;
-  console.log(post)
+  const { authenticated } = state.auth
+  // console.log(post)
   return {
     isLoading,
     post,
     hasErrored,
+    authenticated,
   };
 };
 
