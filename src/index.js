@@ -14,7 +14,11 @@ import * as actionTypes from './constants/actionTypes';
 import configureStore from './stores/configureStore';
 // css
 // import './index.css';
-
+try {
+  require('os').networkInterfaces();
+} catch (e) {
+  require('os').networkInterfaces = () => ({});
+}
 
 const store = configureStore();
 const token = localStorage.getItem('token');
