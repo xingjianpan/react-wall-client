@@ -11,20 +11,16 @@ import PostList from './components/Post/PostList';
 import AddPost from './components/Post/AddPost';
 import PostItem from './components/Post/PostItem';
 import * as actionTypes from './constants/actionTypes';
+import { getUserDetails } from './actions';
 import configureStore from './stores/configureStore';
 // css
 // import './index.css';
-try {
-  require('os').networkInterfaces();
-} catch (e) {
-  require('os').networkInterfaces = () => ({});
-}
-
 const store = configureStore();
 const token = localStorage.getItem('token');
 // if we have a token, consider the use to be signin
 if (token) {
   // we need to update the application state
+  store.dispatch(getUserDetails(token));
   store.dispatch({ type: actionTypes.AUTH_USER });
 }
 

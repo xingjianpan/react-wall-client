@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import Loading from 'react-loading';
 
 // relative import
-import { fetchPostItem } from '../../actions';
+import { fetchPostItem, deletePost } from '../../actions';
 
 class PostItem extends Component {
   componentDidMount() {
@@ -24,8 +24,8 @@ class PostItem extends Component {
       if (this.props.user.username === post.owner) {
         return (
           <div>
-            <button>Edit</button>
-            <button>Delete</button>
+            <button >Edit</button>
+            <button onClick={() => { this.props.deletePost(post) }}>Delete</button>
           </div>
         );
       }
@@ -71,4 +71,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, { fetchPostItem })(PostItem);
+export default connect(mapStateToProps, { fetchPostItem, deletePost })(PostItem);

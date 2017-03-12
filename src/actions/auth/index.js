@@ -34,7 +34,7 @@ export function getUserDetails(token) {
     .then((response) => {
       dispatch({ type: actionTypes.SET_USER, payload: response });
     })
-    .catch((error)=> {
+    .catch((error) => {
     });
   };
 }

@@ -1,6 +1,6 @@
-import { signupUser, signinUser, signoutUser, clearAuthError } from './auth';
+import { signupUser, signinUser, signoutUser, clearAuthError, getUserDetails } from './auth';
 import { fetchPostList, setIgnoreLastFetch } from './postlist';
-import { addPost, fetchPostItem } from './post';
+import { addPost, deletePost, fetchPostItem } from './post';
 
 export {
   signupUser,
@@ -10,5 +10,7 @@ export {
   fetchPostList,
   setIgnoreLastFetch,
   addPost,
+  deletePost,
   fetchPostItem,
+  getUserDetails,
 };

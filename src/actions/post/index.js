@@ -19,6 +19,20 @@ export const addPost = ({ title, content }) => {
   };
 };
 
+export const deletePost = (post) => {
+
+  return (dispatch) => {
+    //  The second parameter to axios.delete is config, not data
+    axios.delete(
+      `${POST_ROOT_URL}${post.id}/`,
+      { headers: { Authorization: `Token ${localStorage.getItem('token')}`} },
+    ).then(() => {
+      browserHistory.push('/');
+      // refresh
+      dispatch(fetchPostList(POST_ROOT_URL));
+    });
+  };
+};
 
 export const fetchPostItemSuccess = (response) => {
   // console.log(response)
