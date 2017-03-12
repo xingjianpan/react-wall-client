@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
-import { addPost } from '../../actions';
+import { editPost, fetchPostItem } from '../../actions';
 
 const validate = (values) => {
   const errors = {};
@@ -32,10 +32,14 @@ const renderField = ({ input, label, type, textarea, meta: { touched, error, war
 };
 
 
-class AddPost extends Component {
+class EditPost extends Component {
+
+  componentDidMount() {
+    this.props.fetchPostItem(this.props.params.postId);
+  }
 
   handleFormSubmit(formProps) {
-    this.props.addPost(formProps);
+    this.props.editPost(formProps);
   }
 
   renderAlert() {
@@ -61,26 +65,27 @@ class AddPost extends Component {
         <Field label="Content" name="content" component={renderField} type="text" textarea={true} />
       </fieldset>
       {this.renderAlert()}
-      <button action="submit" className="btn btn-primary">Add Post</button>
+      <button action="submit" className="btn btn-primary">Edit Post</button>
     </form>
     );
   }
 }
 
 
-// export default reduxForm({
-//   form: 'signin',
-// })(Signin)
-
 function mapStateToProps(state) {
-  return { errorMessage: state.posts.error };
+  return {
+    errorMessage: state.posts.error,
+    initialValues: state.post.post,
+  }
 }
-AddPost = reduxForm({
-  form:'addpost',
+
+EditPost = reduxForm({
+  form: 'editpost',
   validate,
-})(AddPost);
+  enableReinitialize: true,
+})(EditPost);
 // connect Signinform with actions using 'connect'
-AddPost = connect(mapStateToProps, { addPost })(AddPost);
+EditPost = connect(mapStateToProps, { editPost, fetchPostItem })(EditPost);
 
 // do not forget to export default
-export default AddPost;
+export default EditPost;

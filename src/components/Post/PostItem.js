@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Loading from 'react-loading';
-
+import { browserHistory } from 'react-router';
 // relative import
 import { fetchPostItem, deletePost } from '../../actions';
 
@@ -18,14 +18,18 @@ class PostItem extends Component {
     }
   }
 
+  handleEdit() {
+    const currentPath = this.props.location.pathname;
+    browserHistory.push(`${currentPath}/edit`);
+  }
   renderEditor(post){
     // show editor if current user is also the owner of the post
     if (this.props.user) {
       if (this.props.user.username === post.owner) {
         return (
           <div>
-            <button >Edit</button>
-            <button onClick={() => { this.props.deletePost(post) }}>Delete</button>
+            <button onClick={() => { this.handleEdit(); }}>Edit</button>
+            <button onClick={() => { this.props.deletePost(post); }}>Delete</button>
           </div>
         );
       }
@@ -52,6 +56,7 @@ class PostItem extends Component {
         </div>
 
         {this.renderEditor(post)}
+
       </div>
     )
   }

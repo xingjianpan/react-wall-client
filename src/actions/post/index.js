@@ -19,6 +19,21 @@ export const addPost = ({ title, content }) => {
   };
 };
 
+export const editPost = (post) => {
+  const { id, title, content } = post;
+  return (dispatch) => {
+    axios.put(
+      `${POST_ROOT_URL}${id}/`,
+      { title, content },
+      { headers: { Authorization: `Token ${localStorage.getItem('token')}` }},
+    )
+    .then((response) => {
+      browserHistory.push(`/post/${id}`);
+    });
+  };
+};
+
+
 export const deletePost = (post) => {
 
   return (dispatch) => {

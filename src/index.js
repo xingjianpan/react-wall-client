@@ -9,6 +9,7 @@ import Signout from './components/Auth/Signout';
 import Signup from './components/Auth/Signup';
 import PostList from './components/Post/PostList';
 import AddPost from './components/Post/AddPost';
+import EditPost from './components/Post/EditPost';
 import PostItem from './components/Post/PostItem';
 import * as actionTypes from './constants/actionTypes';
 import { getUserDetails } from './actions';
@@ -34,6 +35,7 @@ ReactDOM.render(
         <Route path="signup" component={Signup} />
         <Route path="/post/:postId" component={PostItem} />
         <Route path="addpost" component={requireAuth(AddPost)} />
+        <Route path="/post/:postId/edit" component={EditPost} />
         <Route path="*" component={PostList} />
       </Route>
     </Router>
