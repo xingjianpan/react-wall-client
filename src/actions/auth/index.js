@@ -9,9 +9,10 @@ export function signupUser({ email, password1, password2 }) {
       .then((response) => {
         // if request is good
         // - update state to indicate user is authenticated
-        dispatch({ type: actionTypes.AUTH_USER });
+        const token = response.data.key;
+        dispatch(getUserDetails(token));
         // - save the JWT token, use localstorage
-        localStorage.setItem('token', response.data.key);
+        localStorage.setItem('token', token);
         // - redirect to the route /resources
         browserHistory.push('/');
       })
@@ -33,6 +34,7 @@ export function getUserDetails(token) {
     )
     .then((response) => {
       dispatch({ type: actionTypes.SET_USER, payload: response });
+      dispatch({ type: actionTypes.AUTH_USER });
     })
     .catch((error) => {
     });
@@ -50,11 +52,11 @@ export function signinUser({ email, password }) {
       .then((response) => {
           // if request is good
           // - update state to indicate user is authenticated
-        dispatch({ type: actionTypes.AUTH_USER });
+        const token = response.data.key;
+        dispatch(getUserDetails(token));
         // - save the JWT token, use localstorage
-        localStorage.setItem('token', response.data.key);
+        localStorage.setItem('token', token);
         // - redirect to the route /feature
-        dispatch(getUserDetails(response.data.key));
         browserHistory.push('/');
       })
       .catch(() => {

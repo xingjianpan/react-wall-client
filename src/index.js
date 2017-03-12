@@ -21,7 +21,6 @@ const token = localStorage.getItem('token');
 if (token) {
   // we need to update the application state
   store.dispatch(getUserDetails(token));
-  store.dispatch({ type: actionTypes.AUTH_USER });
 }
 
 
