@@ -2,7 +2,8 @@ import axios from 'axios';
 import { browserHistory } from 'react-router';
 import * as actionTypes from '../../constants/actionTypes';
 import { POST_ROOT_URL } from '../../services/api';
-import { fetchPostList } from '../../actions/postlist';
+import { fetchPostList, setIgnoreLastFetch } from '../../actions/postlist';
+
 
 
 export const addPost = ({ title, content }) => {
@@ -28,7 +29,9 @@ export const editPost = (post) => {
       { headers: { Authorization: `Token ${localStorage.getItem('token')}` }},
     )
     .then((response) => {
+      dispatch(setIgnoreLastFetch(false));
       browserHistory.push(`/post/${id}`);
+
     });
   };
 };

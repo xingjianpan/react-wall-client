@@ -31,7 +31,7 @@ export default (state = INITIAL_STATE, action) => {
     case actionTypes.RESET_POST_LIST:
       return INITIAL_STATE;
     case actionTypes.SET_IGNORE_LAST_FETCH:
-      return { ...state, ignoreLastFetch: true };
+      return { ...state, ignoreLastFetch: action.payload };
     default:
       return state;
   }
