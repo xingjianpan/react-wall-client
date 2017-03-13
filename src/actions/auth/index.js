@@ -16,6 +16,7 @@ export function signupUser({ email, password1, password2 }) {
         localStorage.setItem('token', token);
         // - redirect to the route /resources
         browserHistory.push('/');
+        dispatch(showNotification('You have successfully signed up!'))
       })
       .catch((error) => {
         const errObj = error.response.data;

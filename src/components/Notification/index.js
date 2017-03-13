@@ -8,7 +8,7 @@ const UserNotification = (props) => {
       isActive={props.isActive}
       message={props.message}
       action={props.action}
-      onClick={props.onClick }
+      onClick={props.onClick}
     />
   );
 };
