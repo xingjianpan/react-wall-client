@@ -1,6 +1,7 @@
 import { signupUser, signinUser, signoutUser, clearAuthError, getUserDetails } from './auth';
 import { fetchPostList, setIgnoreLastFetch } from './postlist';
 import { addPost, editPost, deletePost, fetchPostItem } from './post';
+import { hideNotification } from './notification';
 
 export {
   signupUser,
@@ -14,4 +15,5 @@ export {
   deletePost,
   fetchPostItem,
   getUserDetails,
+  hideNotification,
 };

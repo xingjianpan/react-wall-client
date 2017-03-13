@@ -57,12 +57,6 @@ class PostItem extends Component {
         </div>
 
         {this.renderEditor(post)}
-        <UserNotification
-          isActive='true'
-          message='hello world'
-          action='Dismiss'
-           />
-
       </div>
     )
   }

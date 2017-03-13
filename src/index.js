@@ -11,7 +11,6 @@ import PostList from './components/Post/PostList';
 import AddPost from './components/Post/AddPost';
 import EditPost from './components/Post/EditPost';
 import PostItem from './components/Post/PostItem';
-import * as actionTypes from './constants/actionTypes';
 import { getUserDetails } from './actions';
 import configureStore from './stores/configureStore';
 // css
