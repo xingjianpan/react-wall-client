@@ -8,7 +8,7 @@ const INITIAL_STATE = {
 
 
 export default (state = INITIAL_STATE, action) => {
-  console.log('action: ', action);
+  // console.log('action: ', action);
   switch (action.type) {
     case actionTypes.HIDE_NOTIFICATION:
       return { ...state, isActive: false };
