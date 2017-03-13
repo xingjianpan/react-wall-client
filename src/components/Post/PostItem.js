@@ -4,6 +4,7 @@ import Loading from 'react-loading';
 import { browserHistory } from 'react-router';
 // relative import
 import { fetchPostItem, deletePost } from '../../actions';
+import UserNotification from '../Notification';
 
 class PostItem extends Component {
   componentDidMount() {
@@ -56,6 +57,11 @@ class PostItem extends Component {
         </div>
 
         {this.renderEditor(post)}
+        <UserNotification
+          isActive='true'
+          message='hello world'
+          action='Dismiss'
+           />
 
       </div>
     )
