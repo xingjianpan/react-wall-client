@@ -5,7 +5,9 @@ import Loading from 'react-loading';
 
 // relative import
 import { fetchPostList, resetPostList, setIgnoreLastFetch } from '../../actions';
+import { hideNotification } from '../../actions';
 import Post from './Post';
+import UserNotification from '../Notification';
 
 const POST_LIST_URL = 'http://localhost:8081/wall/posts/';
 
@@ -96,6 +98,13 @@ class PostList extends Component {
           <p />
           {this.renderButton()}
         </div>
+
+        <UserNotification
+          isActive={this.props.isActive}
+          message={this.props.message}
+          action={this.props.action}
+          onClick={() => {this.props.hideNotification(); }}
+        />
       </div>
 
     );
@@ -106,6 +115,8 @@ const mapStateToPros = (state) => {
   const { isLoading, postList, hasErrored,
           nextHref, prevHref, ignoreLastFetch,
         } = state.posts;
+
+  const { isActive, message, action } = state.notifications;
   // debugger
   return {
     isLoading,
@@ -114,8 +125,11 @@ const mapStateToPros = (state) => {
     nextHref,
     prevHref,
     ignoreLastFetch,
+    isActive,
+    message,
+    action,
   };
 };
 
 export default connect(mapStateToPros,
-  { fetchPostList, resetPostList, setIgnoreLastFetch })(PostList);
+  { fetchPostList, resetPostList, setIgnoreLastFetch, hideNotification })(PostList);

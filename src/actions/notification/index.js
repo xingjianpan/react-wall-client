@@ -5,3 +5,10 @@ export const hideNotification = () => {
     type: actionTypes.HIDE_NOTIFICATION,
   };
 };
+
+export const showNotification = (message) => {
+  return {
+    type: actionTypes.SHOW_NOTIFICATION,
+    payload: message,
+  };
+};

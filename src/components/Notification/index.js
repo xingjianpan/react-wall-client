@@ -1,8 +1,5 @@
 import React from 'react';
 import { Notification } from 'react-notification';
-import { connect } from 'react-redux';
-
-import { hideNotification } from '../../actions';
 
 const UserNotification = (props) => {
   return (
@@ -11,17 +8,9 @@ const UserNotification = (props) => {
       isActive={props.isActive}
       message={props.message}
       action={props.action}
-      onClick={() => { props.hideNotification(); }}
+      onClick={props.onClick }
     />
   );
 };
 
-const mapStateToProps = ({notifications}) => {
-
-  const {isActive} = notifications;
-  return {
-    isActive,
-  };
-};
-
-export default connect(mapStateToProps, { hideNotification })(UserNotification);
+export default UserNotification;

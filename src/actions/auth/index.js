@@ -2,6 +2,7 @@ import axios from 'axios';
 import { browserHistory } from 'react-router';
 import * as actionTypes from '../../constants/actionTypes';
 import { AUTH_ROOT_URL } from '../../services/api';
+import { showNotification } from '../../actions/notification';
 
 export function signupUser({ email, password1, password2 }) {
   return (dispatch) => {
@@ -58,6 +59,7 @@ export function signinUser({ email, password }) {
         localStorage.setItem('token', token);
         // - redirect to the route /feature
         browserHistory.push('/');
+        dispatch(showNotification('You have successfully signed in!'))
       })
       .catch(() => {
         // if request is bad
