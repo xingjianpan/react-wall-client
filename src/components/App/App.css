@@ -25,7 +25,14 @@
 
 }
 
-
+.addpost-form {
+  margin-left :40px;
+}
 .add-post {
-  width: 200px;
+  width: 400px;
+
+}
+
+textarea {
+  height: 400px;
 }

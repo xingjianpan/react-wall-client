@@ -53,7 +53,7 @@ class AddPost extends Component {
     const {handleSubmit } = this.props;
 
     return (
-    <form onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
+    <form onSubmit={handleSubmit(this.handleFormSubmit.bind(this))} className="addpost-form">
       <fieldset className="form-group">
         <Field label="Title" name="title" component={renderField} type="text" />
       </fieldset>
